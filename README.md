@@ -23,7 +23,7 @@ Get the sources and put them into a directory named _zz_asso_kit_ in the Redmine
 
 	git clone https://github.com/mbideau/redmine-asso-kit.git plugins/zz_asso_kit
 
-_The renaming allow the plugin to be the last one loaded, and therfor know of every other plugins_.
+_The renaming allow the plugin to be the last one loaded, and therefor know of every other plugins_.
 
 ## Configure the plugin
 

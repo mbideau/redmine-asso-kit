@@ -1,0 +1,26 @@
+# English strings go here for Rails i18n
+en:
+  label_issue_menu: "List"
+  label_go_to_top: "Back To Top"
+  label_menu_entry: "Menu item"
+  label_settings_image_per_project: "Select a custom field that will contain the image URL of the project"
+  label_settings_theme_per_project: "Select a custom field that will contain the CSS theme URL of the project"
+  label_settings_project_tags: "Select a custom field that will contain the project tags"
+  label_settings_project_custom_menu: "Select a custom field that will contain the custom project menu"
+  label_settings_meta_description: "HTTP Meta tag for 'description'"
+  label_settings_meta_keywords: "HTTP Meta tag for 'keywords'"
+  label_settings_meta_robots: "HTTP Meta tag for 'robots'"
+  label_settings_add_go_to_top: "Add a link 'Back to top' (on every page) ?"
+  label_settings_disabled_modules: "Disable following modules :"
+  label_settings_new_task_message: "Text to display on new task creation (wiki syntax)"
+  label_settings_wiki_sidebar: "Text to display on wiki sidebar (wiki syntax)"
+  label_settings_login_message: "Text to display at login prompt (wiki syntax)"
+  label_settings_footer_message: "Text to display in the footer (wiki syntax)"
+  label_optional: "Optional"
+  label_last_activity: "Last activity date"
+  label_number_of: "Number of"
+  label_created_on: "Created"
+  label_download: Download
+  label_download_plural: Downloads
+  label_download_new: New download
+  label_my_avatar: My avatar

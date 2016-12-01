@@ -1,0 +1,89 @@
+<% string_fields = ProjectCustomField.all %>
+<% select_options = '<option value="">(Select one)</option>' << options_from_collection_for_select(string_fields, :id, :name, @settings['tab_text'].to_i) %>
+
+<% disabled_modules = Struct.new(:id, :name) %>
+<% menu_roles = Struct.new(:id, :name) %>
+<table id="asso-kit-settings">
+  <tr>
+		<th class="setting-name"><label for="settings_image_per_project"><%= l(:label_settings_image_per_project) %></label></th>
+		<td class="setting-value"><%= select_tag 'settings[image_per_project]', select_options.html_safe %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings_theme_per_project"><%= l(:label_settings_theme_per_project) %></label></th>
+		<td class="setting-value"><%= select_tag 'settings[theme_per_project]', select_options.html_safe %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings_project_tags"><%= l(:label_settings_project_tags) %></label></th>
+		<td class="setting-value"><%= select_tag 'settings[project_tags]', select_options.html_safe %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings_project_custom_menu"><%= l(:label_settings_project_custom_menu) %></label></th>
+		<td class="setting-value"><%= select_tag 'settings[project_custom_menu]', select_options.html_safe %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings_meta_description"><%= l(:label_settings_meta_description) %></label></th>
+		<td class="setting-value"><%= text_field_tag('settings[meta_description]', @settings[:meta_description], :size => 80) %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings_meta_keywords"><%= l(:label_settings_meta_keywords) %></label></th>
+		<td class="setting-value"><%= text_field_tag('settings[meta_keywords]', @settings[:meta_keywords], :size => 80) %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[meta_robots]"><%= l(:label_settings_meta_robots) %></label></th>
+		<td class="setting-value"><%= text_field_tag('settings[meta_robots]', @settings[:meta_robots], :size => 80) %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[add_go_to_top]"><%= l(:label_settings_add_go_to_top) %></label></th>
+		<td class="setting-value"><%= check_box_tag 'settings[add_go_to_top]', 1, @settings[:add_go_to_top] %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[disabled_modules]"><%= l(:label_settings_disabled_modules) %></label></th>
+		<td class="setting-value"><%= select_tag("settings[disabled_modules]", options_from_collection_for_select(Redmine::AccessControl.available_project_modules.collect {|m| disabled_modules.new(m, l_or_humanize(m, :prefix => "project_module_").to_s) }, :id, :name, @settings[:disabled_modules]), { :multiple=> true, :style => "height: 300px;" }) %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[new_task_message]"><%= l(:label_settings_new_task_message) %></label></th>
+		<td class="setting-value"><%= text_area_tag 'settings[new_task_message]', @settings[:new_task_message], :class => 'wiki-edit', :rows => 5 %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[wiki_sidebar]"><%= l(:label_settings_wiki_sidebar) %></label></th>
+		<td class="setting-value"><%= text_area_tag 'settings[wiki_sidebar]', @settings[:wiki_sidebar], :class => 'wiki-edit', :rows => 5 %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[login_message]"><%= l(:label_settings_login_message) %></label></th>
+		<td class="setting-value"><%= text_area_tag 'settings[login_message]', @settings[:login_message], :class => 'wiki-edit', :rows => 10 %></td>
+  </tr>
+  <tr>
+		<th class="setting-name"><label for="settings[footer_message]"><%= l(:label_settings_footer_message) %></label></th>
+		<td class="setting-value"><%= text_area_tag 'settings[footer_message]', @settings[:footer_message], :class => 'wiki-edit', :rows => 2 %></td>
+  </tr>
+
+  <% 5.times do |i| %>
+  <% permission_field = 'custom_menu'+i.to_s+'_roles' %>
+
+  <tr>
+		<th class="setting-name"><%=h l(:label_menu_entry) %> #<%= i+1  %></th>
+		<td class="setting-with-children">
+			<table class="setting-child">
+				<tr>
+					<th class="setting-name"><label><%=h l(:field_name)%></label></th>
+					<td class="setting-value"><%= text_field_tag('settings[custom_menu'+i.to_s+'_name]', @settings['custom_menu'+i.to_s+'_name'], :size => 40) %></td>
+				</tr>
+				<tr>
+					<th class="setting-name"><label><%=h l(:field_url)%></label></th>
+					<td class="setting-value"><%= text_field_tag('settings[custom_menu'+i.to_s+'_url]', @settings['custom_menu'+i.to_s+'_url'], :size => 80) %></td>
+				</tr>
+				<tr>
+					<th class="setting-name"><label><%=h l(:field_title)%></label></th>
+					<td class="setting-value"><%= text_field_tag('settings[custom_menu'+i.to_s+'_title]', @settings['custom_menu'+i.to_s+'_title'], :size => 60) %> <i>(<%=l(:label_optional)%>)</i></td>
+				</tr>
+				<tr>
+					<th class="setting-name"><label><%=h l(:label_permissions)%></label></th>
+					<td class="setting-value"><%= select_tag('settings['+permission_field+']', options_from_collection_for_select(Role.sorted.collect {|m| menu_roles.new(m.id, m.name) }, :id, :name, @settings[permission_field]), { :multiple=> true, :style => "height: 100px;" }) %></td>
+				</tr>
+			</table>
+		</td>
+  </tr>
+
+  <% end %>
+
+</table>

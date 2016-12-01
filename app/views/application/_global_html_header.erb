@@ -1,0 +1,56 @@
+<%= javascript_include_tag('redirect.js', plugin: 'zz_asso_kit') %>
+<%= javascript_include_tag('account-menu-dropdown.js', plugin: 'zz_asso_kit') %>
+<%= javascript_include_tag('tasks-dropdown.js', plugin: 'zz_asso_kit') %>
+<%= javascript_include_tag('remove-easy-wbs-promo.js', plugin: 'zz_asso_kit') %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'application', :plugin => 'zz_asso_kit' %>
+<% end %>
+
+<%
+if not @project.nil?
+  theme_per_project_field_id = Setting.plugin_zz_asso_kit['theme_per_project'].to_i
+  theme_per_project_field = @project.custom_values.detect {|v| v.custom_field_id == theme_per_project_field_id}
+  if theme_per_project_field && !theme_per_project_field.value.blank?
+%>
+<link rel="stylesheet" media="all" href="<%= theme_per_project_field.value %>">
+<%
+  end
+end
+%>
+
+<%
+user_roles = User.current.memberships.collect {|m| m.roles}.flatten.uniq
+5.times do |i|
+  add_top_menu_custom_item(i, user_roles)
+end
+%>
+
+<%
+if not @project.nil?
+  project_custom_menu_field_id = Setting.plugin_zz_asso_kit['project_custom_menu'].to_i
+  project_custom_menu_field = @project.custom_values.detect {|v| v.custom_field_id == project_custom_menu_field_id}
+  menu_name = @project && !@project.new_record? ? :project_menu : :application_menu
+  first_item_name = 'menu_1'
+  # remove the existing custom menus first
+  if Redmine::MenuManager.map(menu_name).exists?(first_item_name.to_sym)
+    for i in (30).downto(1)
+      item_name = 'menu_' + i.to_s
+      if Redmine::MenuManager.map(menu_name).exists?(item_name.to_sym)
+        #puts "[DEBUG] removing #{menu_name}:#{item_name}"
+        Redmine::MenuManager.map(menu_name).delete(item_name.to_sym)
+      end
+    end
+  end
+  # add the custom menus then
+  if project_custom_menu_field && !project_custom_menu_field.value.blank?
+    $i = 0
+    project_custom_menu_field.value.strip.scan(/ *\[ *(?<m_text>[^\]\|]+) *(\| *(?<m_position>first|last|after *: *[a-zA-Z0-9]+|before *: *[a-zA-Z0-9]+|parent *: *[a-zA-Z0-9_-]+))? *\] *\( *(?<m_url>[^\)]+) *\) */) do |m_text,m_position,m_url|
+      $i += 1
+      item_name = 'menu_' + $i.to_s
+      add_project_custom_menu(item_name, menu_name, m_text, m_position, m_url)
+      break if $i == 30
+    end
+  end
+end
+%>

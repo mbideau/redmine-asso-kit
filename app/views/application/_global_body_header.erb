@@ -1,0 +1,9 @@
+<%
+unless (controller_name=='account' && action_name=='login') ||
+  (controller_name=='my') ||
+  (controller_name=='account' && action_name=='lost_password')
+%>
+<% if Setting.plugin_zz_asso_kit['add_go_to_top'] %>
+<a id="gototop"></a>
+<% end %>
+<% end %>

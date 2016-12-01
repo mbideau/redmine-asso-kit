@@ -1,0 +1,27 @@
+# French strings go here for Rails i18n
+fr:
+  label_issue_menu: "Liste"
+  label_go_to_top: "Revenir en haut"
+  label_menu_entry: "Elément du menu"
+  label_settings_image_per_project: "Sélectionnez un champ personnalisé qui contiendra l'URL de l'image de chaque projet"
+  label_settings_theme_per_project: "Sélectionnez un champ personnalisé qui contiendra l'URL du thème CSS de chaque projet"
+  label_settings_project_tags: "Sélectionnez un champ personnalisé qui contiendra les mots clés de chaque projet"
+  label_settings_project_custom_menu: "Sélectionnez un champ personnalisé qui contiendra le menu personnalisé de chaque projet"
+  label_settings_meta_description: "HTTP Meta tag 'description'"
+  label_settings_meta_keywords: "HTTP Meta tag 'keywords'"
+  label_settings_meta_robots: "HTTP Meta tag 'robots'"
+  label_settings_add_go_to_top: "Ajouter un lien 'Revenir en haut' (sur chaque page) ?"
+  label_settings_disabled_modules: "Désactiver les modules suivants :"
+  label_settings_new_task_message: "Texte à afficher lors de la création d'une nouvelle tâche (syntaxe wiki)"
+  label_settings_wiki_sidebar: "Texte à afficher sur la barre latérale du wiki (syntaxe wiki)"
+  label_settings_login_message: "Texte à afficher sur la page de connexion (syntaxe wiki)"
+  label_settings_footer_message: "Texte à afficher dans le pied de page (syntaxe wiki)"
+  label_optional: "Optionnel"
+  label_last_activity: "Date de dernière activité"
+  label_number_of: "Nombre de"
+  label_created_on: "Créé le"
+  label_download: Téléchargement
+  label_download_plural: Téléchargements
+  label_download_new: Nouveau téléchargement
+  label_my_avatar: Mon avatar
+

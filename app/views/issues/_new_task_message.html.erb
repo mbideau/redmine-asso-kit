@@ -1,0 +1,8 @@
+<% new_task_message = Setting.plugin_zz_asso_kit['new_task_message']  %>
+<% unless new_task_message.blank? %>
+
+<div class="nodata nodata-left">
+  <%= textilizable(new_task_message).html_safe %>
+</div>
+
+<% end %>

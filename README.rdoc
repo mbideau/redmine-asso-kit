@@ -1,5 +1,6 @@
-# redmine-asso-kit
-A Redmine plugin for a better UI
+= zz_asso_kit
+
+A Plugin for Redmine to a better UI
 
 Many functions where taken as-is or inspired by the [redmine_tweaks](https://github.com/alphanodes/redmine_tweaks) plugin.
 

@@ -1,0 +1,9 @@
+<% login_message = Setting.plugin_zz_asso_kit['login_message'] %>
+<% unless login_message.blank? %>
+
+<br />
+<div class="login-asso-kit">
+  <%= textilizable(login_message).html_safe %>
+</div>
+
+<% end %>

@@ -18,6 +18,12 @@ Many functions where taken as-is or inspired by the [redmine_tweaks](https://git
 - SEO        HTTP Meta tags 'keywords' customizable (default to: "asso kit,gestion de projet,tâches,wiki,forum")
 - SEO        HTTP Meta tags 'robots' added and customizable (default to: "noindex,nofollow,noarchive")
 
+## Installation
+Get the sources and put them into a directory named _zz_asso_kit_ in the Redmine plugins directory :
+
+	git clone https://github.com/mbideau/redmine-asso-kit.git plugins/zz_asso_kit
+
+_The renaming allow the plugin to be the last one loaded, and therfor know of every other plugins_.
 
 ## Configure the plugin
 

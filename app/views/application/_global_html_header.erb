@@ -3,10 +3,6 @@
 <%= javascript_include_tag('tasks-dropdown.js', plugin: 'zz_asso_kit') %>
 <%= javascript_include_tag('remove-easy-wbs-promo.js', plugin: 'zz_asso_kit') %>
 
-<% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'application', :plugin => 'zz_asso_kit' %>
-<% end %>
-
 <%
 if not @project.nil?
   theme_per_project_field_id = Setting.plugin_zz_asso_kit['theme_per_project'].to_i

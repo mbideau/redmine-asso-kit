@@ -3,6 +3,8 @@ A Redmine plugin for a better UI
 
 Many functions where taken as-is or inspired by the [redmine_tweaks](https://github.com/alphanodes/redmine_tweaks) plugin.
 
+You should use it with the [Asso Kit theme](https://github.com/mbideau/redmine-asso-kit-theme).
+
 ## Features added/modified :
 - UI Menu    top menu > account menu rendered as a Dropdown, with the username and avatar as button
 - UI Menu    top menu > user menu added to contains the 'My Page' item and the 'My Issues' badges (from Unread Issues plugin)

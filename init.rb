@@ -77,7 +77,10 @@ Redmine::Plugin.register :zz_asso_kit do
   end
   menu :project_menu, :report, { :controller => 'reports', :action => 'issue_report' }, :param => :id, :caption => :label_report, :parent => :tasks
 
-  #-- project menu  / '+' : add the 'new sub project' menu item
+  #-- project menu  / '+' : add 'new repository' and 'new sub project' menu items
+  if Redmine::Plugin.installed? :redmine_git_hosting
+  	menu :project_menu, :new_repository, {:controller => 'repositories', :action => 'new'}, :param => 'project_id', :caption => :label_repository_new, :parent => :new_object, :last => true, :permission => :manage_repository
+  end
   menu :project_menu, :new_sub_project, {:controller => 'projects', :action => 'new'}, :param => 'parent_id', :caption => :label_subproject_new, :parent => :new_object, :last => true
 
   # -- rename 'Files' to 'Downloads'
